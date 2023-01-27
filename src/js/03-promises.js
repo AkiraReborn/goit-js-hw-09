@@ -20,6 +20,9 @@ function submitCreatePromises(e) {
   let delay = firstDelayMs.valueAsNumber;
   const delayStep = delayStepMs.valueAsNumber;
   const amountVal = amount.valueAsNumber;
+  firstDelayMs.value = '';
+  delayStepMs.value = '';
+  amount.value = '';
 
   for (let i = 1; i <= amountVal; i++) {
     createPromise(i, delay)

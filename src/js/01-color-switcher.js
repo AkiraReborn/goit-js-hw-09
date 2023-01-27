@@ -10,14 +10,19 @@ const backgroundColorSwitcher = function () {
   body.style.backgroundColor = getRandomHexColor();
 };
 
+btnStop.disabled = true;
+let timerId = null;
+
 btnStart.addEventListener('click', () => {
-  colorInterval = setInterval(() => {
-    backgroundColorSwitcher();
-  }, 1000);
+  timerId = setInterval(backgroundColorSwitcher, 1000);
   btnStart.disabled = true;
+  btnStop.disabled = false;
 });
 
+// stop changing color
+
 btnStop.addEventListener('click', () => {
-  clearInterval(colorInterval);
+  clearInterval(timerId);
   btnStart.disabled = false;
+  btnStop.disabled = true;
 });

@@ -9,6 +9,8 @@ const hour = document.querySelector('[data-hours]');
 const minute = document.querySelector('[data-minutes]');
 const second = document.querySelector('[data-seconds]');
 
+startBtn.disabled = true;
+
 const options = {
   enableTime: true,
   time_24hr: true,
@@ -23,7 +25,7 @@ const options = {
       startBtn.addEventListener('click', countdownTime);
 
       function countdownTime() {
-        timer = setInterval(() => {
+        const timer = setInterval(() => {
           startBtn.disabled = true;
           const chosenDate = new Date(dateChosen.value).getTime();
           const now = new Date().getTime();
@@ -39,7 +41,7 @@ const options = {
 
           if (timeRemaing < 1000) {
             clearInterval(timer);
-            startBtn.disabled = false;
+            startBtn.disabled = true;
           }
           console.log(timeRemaing);
         }, 1000);
